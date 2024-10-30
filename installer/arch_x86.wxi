@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?define Platform = "x86" ?>
+
+<!-- Installer package -->
+  <?define PKGNAME = "psqlODBC" ?>
+  <?define CIDREG = "4F0C04EB-ADCB-4fa8-B6A3-E9F74EA693F8" ?>
+  <?define CIDDOC = "89DDBC52-9F0D-4846-91DC-09EECC87E42E" ?>
+  <?define CIDSMD = "{22288E09-B3B6-4181-907F-676099C20125}" ?>
+  <?define UPGCOD = "24BCA538-75A2-4a7f-B236-C99EFC2145DE" ?>
+  <?define ALLUSERS = "1" ?>
+
+<!-- Merge module -->
+  <?define ModuleName = "psqlODBC" ?>
+  <?define BIT64 = "no" ?>
+  <?define ANSIFOLDER = "x86_ANSI_Release" ?>
+  <?define UNICODEFOLDER = "x86_Unicode_Release" ?>
+  <?define Module_PackageId = "ACF10866-5C01-46f0-90F0-D5618638CA48" ?>
+  <?define InstallerVersion = "150" ?>
+<?if $(env.PROCESSOR_ARCHITECTURE) = "AMD64" ?>
+  <?define SysFolder = "$(env.SystemRoot)\syswow64" ?>
+<?else?>
+  <?define SysFolder = "$(env.SystemRoot)\system32" ?>
+<?endif?>
+ 
+</Include>

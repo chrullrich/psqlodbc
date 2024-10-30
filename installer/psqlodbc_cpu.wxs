@@ -2,23 +2,9 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
 
-<?if $(sys.BUILDARCH) = x64 ?>
-  <?define Platform = "x64" ?>
-  <?define PKGNAME = "psqlODBC_x64" ?>
-  <?define CIDREG = "4D361F28-8F75-4c86-9A37-6C279967413D" ?>
-  <?define CIDDOC = "0C745A85-4E55-4bab-BBF1-DCF51D92FCC5" ?>
-  <?define CIDSMD = "{E6410EE8-96DC-4d84-8D07-94F8093BF3EF}" ?>
-  <?define UPGCOD = "BBD29DF5-89F6-4b8b-BDC9-C3EA3A4AFDBB" ?>
-  <?define ALLUSERS = "1" ?>
-<?elseif $(sys.BUILDARCH) = x86 ?>
-  <?define Platform = "x86" ?>
-  <?define PKGNAME = "psqlODBC" ?>
-  <?define CIDREG = "4F0C04EB-ADCB-4fa8-B6A3-E9F74EA693F8" ?>
-  <?define CIDDOC = "89DDBC52-9F0D-4846-91DC-09EECC87E42E" ?>
-  <?define CIDSMD = "{22288E09-B3B6-4181-907F-676099C20125}" ?>
-  <?define UPGCOD = "24BCA538-75A2-4a7f-B236-C99EFC2145DE" ?>
-  <?define ALLUSERS = "1" ?>
-<?else?><!-- sys.BUILDARCH -->
+<?include arch_$(sys.BUILDARCH).wxi ?>
+
+<?ifndef Platform?>
   <?error Invalid build architecture ?>
 <?endif?>
 

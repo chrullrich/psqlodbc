@@ -5,33 +5,9 @@
   <?define BINBASE = ".." ?>
 <?endif?>
 
-<?if $(sys.BUILDARCH) = x64 ?>
-  <?define Platform = "x64" ?>
-  <?define ModuleName = "psqlODBC_x64" ?>
-  <?define BIT64 = "yes" ?>
-  <?define ANSIFOLDER = "x64_ANSI_Release" ?>
-  <?define UNICODEFOLDER = "x64_Unicode_Release" ?>
-  <?define Module_PackageId = "970B6E07-7105-4d66-80FA-9E208952FB96" ?>
-  <?define InstallerVersion = "300" ?>
-<?if $(env.PROCESSOR_ARCHITECTURE) = "AMD64" ?>
-  <?define SysFolder = "$(env.SystemRoot)\system32" ?>
-<?else?>
-  <?define SysFolder = "$(env.SystemRoot)\sysnative" ?>
-<?endif?>
-<?elseif $(sys.BUILDARCH) = x86 ?>
-  <?define Platform = "x86" ?>
-  <?define ModuleName = "psqlODBC" ?>
-  <?define BIT64 = "no" ?>
-  <?define ANSIFOLDER = "x86_ANSI_Release" ?>
-  <?define UNICODEFOLDER = "x86_Unicode_Release" ?>
-  <?define Module_PackageId = "ACF10866-5C01-46f0-90F0-D5618638CA48" ?>
-  <?define InstallerVersion = "150" ?>
-<?if $(env.PROCESSOR_ARCHITECTURE) = "AMD64" ?>
-  <?define SysFolder = "$(env.SystemRoot)\syswow64" ?>
-<?else?>
-  <?define SysFolder = "$(env.SystemRoot)\system32" ?>
-<?endif?>
-<?else?><!-- sys.BUILDARCH -->
+<?include arch_$(sys.BUILDARCH).wxi ?>
+
+<?ifndef Platform?>
   <?error Invalid build architecture ?>
 <?endif?>
 
